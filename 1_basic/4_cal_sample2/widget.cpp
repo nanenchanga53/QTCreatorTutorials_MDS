@@ -58,6 +58,7 @@ void Widget::clickedGroup(int id)
         case 8: case 9: case 10: // 1 2 3
         case 12:
             label->setText((label->text()=="0"?buttonText:label->text()+buttonText));
+
             break;
         case 3:
             clear();

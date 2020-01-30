@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class QLabel;
+class QButtonGroup;
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -10,7 +12,22 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+
+private:
+    QLabel* label;
+    QString numberTemp;
+    QString operate;
+
+public slots:
+    void setNum();
+    void operation();
+    void calculate();
+    void clear();
+    void clickedGroup(int id);
 };
+
+
+
 #endif // WIDGET_H
 
 

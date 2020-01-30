@@ -18,10 +18,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     dialog.cpp \
     main.cpp \
+    mydialog.cpp \
     widget.cpp
 
 HEADERS += \
     dialog.h \
+    mydialog.h \
     widget.h
 
 # Default rules for deployment.

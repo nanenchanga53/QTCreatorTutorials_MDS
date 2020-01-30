@@ -115,7 +115,7 @@ Widget::Widget(QWidget *parent)
     while (!stack.isEmpty())
      qDebug() << stack.pop();
 
-    // # 12 QStack
+    // # 12 QQueue
     QQueue<int> queue;
     queue.enqueue(1);
     queue.enqueue(2);

@@ -35,20 +35,23 @@
 Widget::Widget(QWidget *parent):QWidget(parent)
 {
     resize(600, 600);
-   // 1 H Layout
+   // 1 H Layout 가로로 stackpannel
     QPushButton *pushButton1 = new QPushButton();
     pushButton1->setText("Button1");
     QPushButton *pushButton2=new QPushButton("Button2");
     QPushButton *pushButton3=new QPushButton("Button3"); //QPushButton *pushButton3=new QPushButton("Button3",this);
 
     QHBoxLayout*hBoxLayout = new QHBoxLayout ;
-    hBoxLayout->setMargin(0) ;
+    hBoxLayout->setMargin(10);
+    hBoxLayout->setSpacing(10);
     hBoxLayout->addWidget(pushButton1);
     hBoxLayout->addWidget(pushButton2);
     hBoxLayout->addWidget(pushButton3);
-    //setLayout(hBoxLayout);
+    //setLayout(hBoxLayout);//적용한 레이아웃을 this에 적용한다
+    //return;
 
-    // 2 V Layout
+
+    // 2 V Layout 세로로 stackpannel
     QPushButton *pushButton4 = new QPushButton();
     pushButton4->setText("Button4");
     QPushButton *pushButton5 = new QPushButton("Button5");
@@ -56,17 +59,20 @@ Widget::Widget(QWidget *parent):QWidget(parent)
 
     QVBoxLayout *vBoxLayout = new QVBoxLayout(); //또는 QVBoxLayout *vBoxLayout = new QVBoxLayout(this);
     vBoxLayout->setMargin(6) ;
+    vBoxLayout->setSpacing(10);
     vBoxLayout->addWidget(pushButton4);
     vBoxLayout->addWidget(pushButton5);
     vBoxLayout->addWidget(pushButton6);
 
     //setLayout(vBoxLayout);
+    //return;
 
     // 3 중첩 Layout
     QVBoxLayout *MultiLayer = new QVBoxLayout();
     MultiLayer->addLayout(hBoxLayout);
     MultiLayer->addLayout(vBoxLayout);
     //setLayout(MultiLayer);
+    //return;
 
     // 4 Grid
     QGridLayout *gridLayout = new QGridLayout;
@@ -100,6 +106,7 @@ Widget::Widget(QWidget *parent):QWidget(parent)
     hBoxStackLayout->addLayout(stackedLayout);
 
     setLayout(hBoxStackLayout);
+    //return;
 
     // 6 Frame
     QFrame *plainline = new QFrame(this);
@@ -117,6 +124,7 @@ Widget::Widget(QWidget *parent):QWidget(parent)
 
     sunkenLine->setLineWidth(2) ;
     sunkenLine->setFrameStyle(QFrame::HLine|QFrame::Sunken);
+    //return;
 
     // 7 GroupBox
     QLineEdit *lineEdit[3];
@@ -124,6 +132,7 @@ Widget::Widget(QWidget *parent):QWidget(parent)
         lineEdit[i] = new QLineEdit(this);
     }
 
+    //Text + 입력텍스트
     QFormLayout * formLayout = new QFormLayout ;
     formLayout->addRow("&IP Address", lineEdit[0]);
     formLayout->addRow("Mac Address" , lineEdit[1]);
@@ -135,6 +144,7 @@ Widget::Widget(QWidget *parent):QWidget(parent)
 
     //resize( groupBox->sizeHint().width()+10,
     //        groupBox->sizeHint().height()+10);
+    //return;
 
     // 8 Tab
     QDial*  dial2 = new QDial(this) ;
