@@ -4,7 +4,7 @@
 #include <QWidget>
 #include <QStackedLayout>
 
-//사용자 위젯 만드
+
 class myWidget : public QWidget
 {
     Q_OBJECT

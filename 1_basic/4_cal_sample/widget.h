@@ -3,6 +3,8 @@
 
 #include <QWidget>
 
+class QLabel;
+
 class Widget : public QWidget
 {
     Q_OBJECT
@@ -11,8 +13,18 @@ public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
 
-public slots:
-    void pushed_Save();
+private:
+    QLabel* label;
+    QString numberTemp;
+    QString operate;
 
+public slots:
+    void setNum();
+    void operation();
+    void calculate();
+    void clear();
 };
 #endif // WIDGET_H
+
+
+

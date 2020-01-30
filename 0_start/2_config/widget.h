@@ -30,7 +30,7 @@ public:
 public:
     QComboBox *combo;
     QLineEdit *line;
-    QLabel *label;
+    QLabel *label,*tempset,*temp,*volset,*isSliderPressed;
     QLCDNumber *lcd;
     QProgressBar *pbar;
     QTextBrowser *browser;
@@ -41,5 +41,13 @@ public:
     QSlider *slider;
     QScrollBar *scbar;
     QDial *dial;
+
+public slots:
+    void setValueSlider(int value);
+    void setValueDial(int value);
+    void setSliderPressedOn();
+    void setSliderPressedOff();
+
+
 };
 #endif // WIDGET_H

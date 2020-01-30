@@ -3,8 +3,6 @@
 #include <QStackedLayout>
 #include <QPushButton>
 #include <QDebug>
-#include <QLCDNumber>
-#include <QApplication>
 
 myWidget::myWidget(QWidget *parent)
     : QWidget(parent)
@@ -24,7 +22,6 @@ myWidget::myWidget(QWidget *parent)
     QPushButton *WidgetP3_btn = new QPushButton("3page", WidgetP3);
     WidgetP3_btn->setGeometry(50,50,100,100);
 
-    //헤어파일안에 미리 선언해 놓자 순서대로 보여주는 위젯
     StackedLayout = new QStackedLayout(this);
     StackedLayout->addWidget(WidgetP1);
     StackedLayout->addWidget(WidgetP2);
@@ -33,8 +30,6 @@ myWidget::myWidget(QWidget *parent)
     connect(WidgetP1_btn, SIGNAL(clicked()), this, SLOT(setPage1()));
     connect(WidgetP2_btn, SIGNAL(clicked()), this, SLOT(setPage2()));
     connect(WidgetP3_btn, SIGNAL(clicked()), this, SLOT(setPage3()));
-
-
 
     char a;
     a = '1';
@@ -54,19 +49,14 @@ myWidget::~myWidget()
 {
 }
 
-//버튼이 눌리면 다음위젯
 void myWidget::setPage1()
 {
     StackedLayout->setCurrentIndex(1);
 }
-
-//버튼이 눌리면 다음위젯
 void myWidget::setPage2()
 {
     StackedLayout->setCurrentIndex(2);
 }
-
-//버튼이 눌리면 다음위젯
 void myWidget::setPage3()
 {
     StackedLayout->setCurrentIndex(0);

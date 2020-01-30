@@ -77,18 +77,23 @@ Widget::Widget(QWidget *parent)
     check[1]->setGeometry(200, 160, 80, 20);
     check[2]->setGeometry(280, 160, 80, 20);
 
-    QLabel *temp = new QLabel("내부온도 :", this);
-    QLabel *tempset = new QLabel("0", this);
+    temp = new QLabel("내부온도 :", this);
+    tempset = new QLabel("0", this);
     slider = new QSlider(this);
     slider->setOrientation(Qt::Horizontal);
     slider->setTickPosition(QSlider::TicksAbove);
     slider->setStyle(QStyleFactory::create("Fusion"));
     temp->setGeometry(10, 190, 100, 20);
     slider->setGeometry(120, 190, 100, 20);
+    QObject::connect(slider,SIGNAL(valueChanged(int)), this,SLOT(setValueSlider(int)));
     tempset->setGeometry(230, 190, 50, 20);
+    isSliderPressed = new QLabel("떼짐",this);
+    isSliderPressed->setGeometry(300,190,50,20);
+    QObject::connect(slider,SIGNAL(sliderPressed()),this,SLOT(setSliderPressedOn()));
+    QObject::connect(slider,SIGNAL(sliderReleased()),this,SLOT(setSliderPressedOff()));
 
     QLabel *vol = new QLabel("볼륨 :", this);
-    QLabel *volset = new QLabel("0", this);
+    volset = new QLabel("0", this);
     dial = new QDial(this);
     vol->setGeometry(10, 220, 100, 20);
     dial->setGeometry(120, 220, 100, 100);
@@ -97,8 +102,32 @@ Widget::Widget(QWidget *parent)
     dial->setNotchesVisible(true);
     dial->setNotchTarget(10);
 
+    QObject::connect(dial,SIGNAL(valueChanged(int)),this,SLOT(setValueDial(int)));
+
     btn = new QPushButton("설정완료", this);
     btn->setGeometry(10, 330, 70, 40);
+}
+
+void Widget::setValueSlider(int value)
+{
+    //tempset->setNum(value);
+    tempset->setText(QString::number(value));
+}
+
+void Widget::setValueDial(int value)
+{
+    //tempset->setNum(value);
+    volset->setText(QString::number(value));
+}
+
+void Widget::setSliderPressedOn()
+{
+    isSliderPressed->setText("누름");
+}
+
+void Widget::setSliderPressedOff()
+{
+    isSliderPressed->setText("떼짐");
 }
 
 Widget::~Widget()

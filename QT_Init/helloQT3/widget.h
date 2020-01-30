@@ -10,5 +10,12 @@ class Widget : public QWidget
 public:
     Widget(QWidget *parent = nullptr);
     ~Widget();
+
+public:
+    void mQSpinBox();
+    void mQSlider();
+    void mQRadioButton();
+    void mQDial();
 };
+
 #endif // WIDGET_H

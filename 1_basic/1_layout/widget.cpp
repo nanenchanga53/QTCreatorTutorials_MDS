@@ -99,7 +99,7 @@ Widget::Widget(QWidget *parent):QWidget(parent)
     hBoxStackLayout->addWidget(dial);
     hBoxStackLayout->addLayout(stackedLayout);
 
-    //setLayout(hBoxStackLayout);
+    setLayout(hBoxStackLayout);
 
     // 6 Frame
     QFrame *plainline = new QFrame(this);
