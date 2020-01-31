@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 
     for(int i = 199; i>= 0; --i)
     {
-        animation2->setPosAt(i/200.0, QPointF(i,i));
+        animation2->setPosAt(i/200.0, QPointF(-i,-i));
     }
     animation2->setRotationAt(30, 80.0/200.0);
     animation2->setRotationAt(180.0/200.0,90);
