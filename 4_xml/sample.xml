@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members>
+    <member>
+        <firstname>c</firstname>
+        <lastname>mw</lastname>
+        <gender>male</gender>
+    </member>
+    <member>
+        <firstname>k</firstname>
+        <lastname>ms</lastname>
+        <gender>male</gender>
+    </member>
+    <member>
+        <firstname>y</firstname>
+        <lastname>sy</lastname>
+        <gender>female</gender>
+    </member>
+</members>

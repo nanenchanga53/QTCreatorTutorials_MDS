@@ -1,0 +1,5 @@
+xycar에서 서버로 쓸때 소켓통신을 위한 코드이다
+들어오는 값의 위치를 가져와야 한다
+
+./imu /dev/ttyACM1
+./imu /dev/ttyUSB1

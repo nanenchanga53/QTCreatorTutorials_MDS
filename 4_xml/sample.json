@@ -1,0 +1,23 @@
+{
+    "time": "08:25:37 AM",
+    "date": "01-29",
+    "success": true,
+    "properties": [
+        {
+            "ID": 1001,
+            "PropertyName": "choi",
+            "key": "rnd"
+        },
+        {
+            "ID": 1002,
+            "PropertyName": "kim",
+            "key": "infra"
+        },
+        {
+            "ID": 1003,
+            "PropertyName": "lee",
+            "key": "QC"
+        }
+    ]
+}
+

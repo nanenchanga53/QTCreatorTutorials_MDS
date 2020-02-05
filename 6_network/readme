@@ -1,0 +1,30 @@
+xycar-a2   use lidar sdk
+-----
+cd lidar_sdk/rplidar_sdk-release-v1.11.0/sdk
+make
+cd app
+make
+cd simple_grabber
+make
+cd ..
+cd ..
+cd output
+cd Linux
+cd Release
+chmod -f 0777 ultra_simple
+./ultra_simple /dev/ttyUSB1
+
+---
+xycar-a2   use serial recieve
+----
+cd serial_comm_recv
+gcc -o serial_comm_recv serial_sample.c
+------
+
+xycar-a2    use serial networksocket
+------
+cd network_socket
+gcc -o client client.c -lpthread
+
+gcc -o server server.c -lpthread
+
