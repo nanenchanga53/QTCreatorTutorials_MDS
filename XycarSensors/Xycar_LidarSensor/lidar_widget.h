@@ -9,7 +9,7 @@ namespace Ui { class Lidar_Widget; }
 QT_END_NAMESPACE
 
 class QTcpSocket;
-class imu3d;
+class lidarPaint;
 class Lidar_Widget : public QWidget
 {
     Q_OBJECT
@@ -17,13 +17,15 @@ class Lidar_Widget : public QWidget
 public:
     Lidar_Widget(QWidget *parent = nullptr);
     ~Lidar_Widget();
+    void paint(QPainter *painter, QPaintEvent *event, int elapsed);
 
 private:
     Ui::Lidar_Widget *ui;
     void initialize();
     QTcpSocket *tcpSocket;
+    lidarPaint* objpaint;
+    int iDist[360];
 
-    imu3d* obj3d;
 
 
 private slots:

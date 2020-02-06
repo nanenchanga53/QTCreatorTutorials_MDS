@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Lidar_Widget</class>
- <widget class="QWidget" name="Lidar_Widget">
+ <class>Imu_Widget</class>
+ <widget class="QWidget" name="Imu_Widget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Lidar 제어기 연결</string>
+    <string>imu 제어기 연결</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">

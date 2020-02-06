@@ -16,17 +16,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    imu3d.cpp \
+    lidarpaint.cpp \
     main.cpp \
     lidar_widget.cpp
 
 HEADERS += \
-    imu3d.h \
-    lidar_widget.h
+    lidar_widget.h \
+    lidarpaint.h
 
 FORMS += \
-    imu3d.ui \
-    lidar_widget.ui
+    lidar_widget.ui \
+    lidarpaint.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

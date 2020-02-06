@@ -1,9 +1,9 @@
 #include "lidar_widget.h"
-#include "imu3d.h"
+#include "lidarpaint.h"
 #include "ui_lidar_widget.h"
 #include<QHostAddress>
 #include<QtDebug>
-#include <QTime>
+#include<QTime>
 
 Lidar_Widget::Lidar_Widget(QWidget *parent)
     : QWidget(parent)
@@ -13,8 +13,8 @@ Lidar_Widget::Lidar_Widget(QWidget *parent)
 
     connect(ui->connectButton, SIGNAL(clicked()), this, SLOT(connectButton()));
 
-    obj3d = new imu3d(ui->sensor);
-    obj3d->resize(ui->sensor->width(), ui->sensor->height());
+    objpaint = new lidarPaint(ui->sensor);
+    objpaint->resize(ui->sensor->width(), ui->sensor->height());
 
     initialize();
 }
@@ -23,7 +23,6 @@ Lidar_Widget::~Lidar_Widget()
 {
     delete ui;
 }
-
 
 void Lidar_Widget::initialize()
 {
@@ -34,6 +33,9 @@ void Lidar_Widget::initialize()
             this,      SLOT(readMessage()));
     connect(tcpSocket, SIGNAL(disconnected()),
             this,      SLOT(disconnected()));
+
+    for(int i = 0; i< 360; i++)
+        iDist[i] = 0;
 }
 
 void Lidar_Widget::connectButton()
@@ -48,21 +50,42 @@ void Lidar_Widget::connectButton()
 
 void Lidar_Widget::readMessage()
 {
+    QString strRecvs;
     if(tcpSocket->bytesAvailable() >= 0) //바이트로 데이터를 읽는다
     {
         QByteArray readData = tcpSocket->readAll(); //큰 데이터가 들어올때는 잘라서 쓰도록 변경하자
-        ui->textEdit->append(readData);
-        QString strRecv(readData);
+        QString strRecv(readData),strDump;
+        strRecvs.append(strRecv);
+        int startAt = strRecvs.indexOf("[",Qt::CaseSensitive);
+        int lastAt = strRecvs.indexOf("]",Qt::CaseSensitive);
 
-        ui->TimeLable->setText(QTime::currentTime().toString());
-        ui->YPRLabel->setText(readData);
+        if(lastAt > 0)
+        {
+            strDump = strRecvs.mid(startAt,lastAt-startAt+1);
+            strRecvs.remove(0,strDump.length());
+            strDump.remove("[",Qt::CaseSensitive);
+            strDump.remove("]",Qt::CaseSensitive);
+            strDump.remove(0,1);
+        }
 
-        strRecv.remove("\r\n").remove("#YPR=");
+        if(strDump.length() != 0)
+        {
+            QStringList strRecvArray = strDump.split("|");
+            if(strRecvArray.count() != 360)
+                return;
+            ui->textEdit->append("------------------------\n");
+            ui->textEdit->append(strDump);
+            ui->textEdit->append("------------------------\n");
 
-        QStringList strRecvArray = strRecv.split(",");
-        ui->YAWLabel->setText(strRecvArray[0]);
-        ui->PITCHLabel->setText(strRecvArray[1]);
-        ui->ROLLLabel->setText(strRecvArray[2]);
+
+            for(int i = 0; i< strRecvArray.count();i++)
+            {
+                QStringList recvData;
+                recvData = strRecvArray[i].split("_");
+                iDist[i] = recvData[1].toInt();
+            }
+        }
+
 
     }
 }
