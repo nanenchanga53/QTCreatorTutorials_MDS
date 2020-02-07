@@ -1,30 +1,30 @@
 #include "lidar_widget.h"
-#include "lidarpaint.h"
 #include "ui_lidar_widget.h"
+#include "lidarpaint.h"
 #include<QHostAddress>
 #include<QtDebug>
 #include<QTime>
 
-Lidar_Widget::Lidar_Widget(QWidget *parent)
-    : QWidget(parent)
-    , ui(new Ui::Lidar_Widget)
+lidar_Widget::lidar_Widget(QWidget *parent) :
+    QWidget(parent),
+    ui(new Ui::lidar_Widget)
 {
     ui->setupUi(this);
 
     connect(ui->connectButton, SIGNAL(clicked()), this, SLOT(connectButton()));
 
-    objpaint = new lidarPaint(ui->sensor);
+    objpaint = new LidarPaint(ui->sensor);
     objpaint->resize(ui->sensor->width(), ui->sensor->height());
 
     initialize();
 }
 
-Lidar_Widget::~Lidar_Widget()
+lidar_Widget::~lidar_Widget()
 {
     delete ui;
 }
 
-void Lidar_Widget::initialize()
+void lidar_Widget::initialize()
 {
     tcpSocket = new QTcpSocket(this);
 
@@ -39,7 +39,7 @@ void Lidar_Widget::initialize()
         iDist[i] = 0;
 }
 
-void Lidar_Widget::connectButton()
+void lidar_Widget::connectButton()
 {
     QString serverip   = ui->serverIP->text().trimmed();
     QString serverPort = ui->portNum->text().trimmed();
@@ -49,7 +49,7 @@ void Lidar_Widget::connectButton()
 
 }
 
-void Lidar_Widget::readMessage()
+void lidar_Widget::readMessage()
 {
     QString strRecvs;
     if(tcpSocket->bytesAvailable() >= 0) //바이트로 데이터를 읽는다
@@ -94,7 +94,16 @@ void Lidar_Widget::readMessage()
     }
 }
 
-void Lidar_Widget::disconnected()
+void lidar_Widget::disconnected()
 {
     qDebug() << Q_FUNC_INFO << "서버 접속 종료.";
 }
+
+void lidar_Widget::recvYaw(int numYaw)
+{
+    ui->LabelYAW->setNum(numYaw);
+    ui->lineEditAngle->setText(QString::number(numYaw));
+    qDebug() << "YAW:" << numYaw;
+
+}
+

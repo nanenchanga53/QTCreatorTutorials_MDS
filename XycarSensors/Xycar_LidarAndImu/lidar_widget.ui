@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Lidar_Widget</class>
- <widget class="QWidget" name="Lidar_Widget">
+ <class>lidar_Widget</class>
+ <widget class="QWidget" name="lidar_Widget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -158,6 +158,19 @@
    </property>
    <property name="text">
     <string>0</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="LabelYAW">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>180</y>
+     <width>321</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>YAW :</string>
    </property>
   </widget>
  </widget>

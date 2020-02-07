@@ -8,22 +8,22 @@
 #include <QPen>
 
 namespace Ui {
-class lidarPaint;
+class LidarPaint;
 }
 
-class lidarPaint : public QWidget
+class LidarPaint : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit lidarPaint(QWidget *parent = nullptr);
-    ~lidarPaint();
+    explicit LidarPaint(QWidget *parent = nullptr);
+    ~LidarPaint();
 
     void paint(QPainter *painter, QPaintEvent *event, int elapsed);
     void drawPoint(int angle,int length);
 
 private:
-    Ui::lidarPaint *ui;
+    Ui::LidarPaint *ui;
     QBrush background;
     QBrush circleBrush;
     QFont textFont;
@@ -37,8 +37,6 @@ public slots:
 
 protected:
     void paintEvent(QPaintEvent *event);
-
-
 };
 
 #endif // LIDARPAINT_H

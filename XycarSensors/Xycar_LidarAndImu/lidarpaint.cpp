@@ -1,26 +1,23 @@
 #include "lidarpaint.h"
 #include "ui_lidarpaint.h"
-
 #include <QPainter>
 #include <QPaintEvent>
-
-lidarPaint::lidarPaint(QWidget *parent) :
+LidarPaint::LidarPaint(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::lidarPaint)
+    ui(new Ui::LidarPaint)
 {
     ui->setupUi(this);
     startAngle = 0;
     for(int i = 0; i< 360;i++)
         iDist[i] = 0;
-
 }
 
-lidarPaint::~lidarPaint()
+LidarPaint::~LidarPaint()
 {
     delete ui;
 }
 
-void lidarPaint::paintEvent(QPaintEvent *event)
+void LidarPaint::paintEvent(QPaintEvent *event)
 {
     QPainter *painter = new QPainter(this);
     painter->begin(this);
@@ -80,19 +77,19 @@ void lidarPaint::paintEvent(QPaintEvent *event)
 
 }
 
-void lidarPaint::ChangeAngle(QString angle)
+void LidarPaint::ChangeAngle(QString angle)
 {
     startAngle = angle.toInt();
 }
 
 //! [1]
-void lidarPaint::paint(QPainter *painter, QPaintEvent *event, int elapsed)
+void LidarPaint::paint(QPainter *painter, QPaintEvent *event, int elapsed)
 {
 //! [2]
 
 }
 
-void lidarPaint::drawPoint(int angle, int length)
+void LidarPaint::drawPoint(int angle, int length)
 {
     iDist[angle] = length;
 

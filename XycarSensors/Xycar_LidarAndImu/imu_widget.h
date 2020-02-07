@@ -5,29 +5,31 @@
 #include <QTcpSocket>
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class Imu_Widget; }
+namespace Ui { class imu_widget; }
 QT_END_NAMESPACE
 
 class QTcpSocket;
-class imu3d;
-class Imu_Widget : public QWidget
+class Imu3D;
+class imu_widget : public QWidget
 {
     Q_OBJECT
 
 public:
-    Imu_Widget(QWidget *parent = nullptr);
-    ~Imu_Widget();
+    imu_widget(QWidget *parent = nullptr);
+    ~imu_widget();
+
+signals:
+    void SendYaw(int numYaw);
 
 private:
-    Ui::Imu_Widget *ui;
+    Ui::imu_widget *ui;
     void initialize();
     QTcpSocket *tcpSocket;
-    imu3d* obj3d;
-
+    Imu3D* obj3d;
 
 private slots:
     void connectButton();
     void readMessage();
     void disconnected();
 };
-#endif // Imu_Widget_H
+#endif // IMU_WIDGET_H
