@@ -18,6 +18,9 @@ public:
     explicit lidar_Widget(QWidget *parent = nullptr);
     ~lidar_Widget();
     void paint(QPainter *painter, QPaintEvent *event, int elapsed);
+    int iDist[360];
+    int iDist_Buf[360];
+
 
 public slots:
     void recvYaw(int numYaw);
@@ -27,7 +30,7 @@ private:
     void initialize();
     QTcpSocket *tcpSocket;
     LidarPaint* objpaint;
-    int iDist[360];
+
 
 private slots:
     void connectButton();

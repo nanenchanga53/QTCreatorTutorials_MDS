@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Camera_Widget</class>
+ <widget class="QWidget" name="Camera_Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>833</width>
+    <height>543</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QLineEdit" name="serverIP">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>40</y>
+     <width>113</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>192.168.101.10</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="portNum">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>40</y>
+     <width>113</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>9005</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="connectButton">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>40</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>camera 연결</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="sensor">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>110</y>
+     <width>591</width>
+     <height>401</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

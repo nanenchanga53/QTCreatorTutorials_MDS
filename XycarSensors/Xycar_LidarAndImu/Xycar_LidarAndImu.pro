@@ -12,7 +12,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += /home/class/opencv-3.4.5/include
 
-LIBS += -L/home/class/opencv-3.4.5/build/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
+LIBS += -L/home/class/opencv-3.4.5/build/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
 
 # You can also make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
@@ -25,20 +25,24 @@ SOURCES += \
     lidar_widget.cpp \
     lidarpaint.cpp \
     main.cpp \
-    imu_widget.cpp
+    imu_widget.cpp \
+    sonar_widget.cpp
 
 HEADERS += \
     camera_widget.h \
     imu3d.h \
     imu_widget.h \
     lidar_widget.h \
-    lidarpaint.h
+    lidarpaint.h \
+    sonar_widget.h
 
 FORMS += \
+    camera_widget.ui \
     imu3d.ui \
     imu_widget.ui \
     lidar_widget.ui \
-    lidarpaint.ui
+    lidarpaint.ui \
+    sonar_widget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

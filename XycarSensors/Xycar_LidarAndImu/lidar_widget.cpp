@@ -36,7 +36,10 @@ void lidar_Widget::initialize()
     connect(ui->lineEditAngle,SIGNAL(textChanged(const QString &)),objpaint,SLOT(ChangeAngle(const QString &)));
 
     for(int i = 0; i< 360; i++)
+    {
         iDist[i] = 0;
+        iDist_Buf[i]=0;
+    }
 }
 
 void lidar_Widget::connectButton()
@@ -84,6 +87,7 @@ void lidar_Widget::readMessage()
                 QStringList recvData;
                 recvData = strRecvArray[i].split("_");
                 iDist[i] = recvData[1].toInt();
+                iDist_Buf[i] = recvData[1].toInt();
                 objpaint->drawPoint(i,iDist[i]);
             }
             objpaint->update();
