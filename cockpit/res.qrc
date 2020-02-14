@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/off.png</file>
+        <file>images/on.png</file>
+        <file>images/lArrow.PNG</file>
+        <file>images/rArrow.PNG</file>
+        <file>images/cluster_1.jpg</file>
+        <file>images/map.html</file>
+    </qresource>
+</RCC>
